@@ -1,5 +1,6 @@
 var interval = -1;
 var sid = "";
+// This object is formatted like an API response so it can be passed and handled like any other error
 var err_obj = {seq: null, status: 1, content: {error: "NOT_ONLINE"}};
 
 chrome.browserAction.onClicked.addListener(function(){
@@ -37,16 +38,20 @@ function makeRequest(obj, callback){
 				if(callback)
 					callback(err_obj);
 				return;
-			}var response = JSON.parse(xmlhttp.responseText);
+			}
+			var response = JSON.parse(xmlhttp.responseText);
 			if(response && response.content){
 				if(response.content.error || response.status != 0){
 					if(response.content.error == "NOT_LOGGED_IN"){
-						var req = {"op": "login", "user": localStorage.username,
-						           "password": localStorage.password};
+						var req = {
+							"op": "login",
+							"user": localStorage.username,
+							"password": localStorage.password
+						};
 						makeRequest(req, function(response){
-								sid = response.session_id;
-								makeRequest(obj, callback);
-							});
+							sid = response.session_id;
+							makeRequest(obj, callback);
+						});
 					}else{
 						if(callback)
 							callback(response);
@@ -79,7 +84,7 @@ function update(){
 
 	if(interval != -1)
 		clearInterval(interval);
-	// We reset the interval each time in case it was changed in localStorage.
+	// We reset the interval each tick in case it was changed in localStorage.
 	// It's an interval rather than a timeout because there could be errors that
 	// prevent this line from executing, and I'm too lazy to catch them all.
 	if(localStorage.interval)
