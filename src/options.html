@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>ezttrss - Options</title>
+		<meta charset="UTF-8" />
+		<script type="text/javascript" src="options.js"></script>
+		<link rel="stylesheet" href="options.css" type="text/css" />
+	</head>
+	<body>
+		<form id="options">
+			<div class='header'>
+				<img src="logo.png">
+			</div>
+			<fieldset>
+				<div class="row" id="username-row">
+					<label>Login:</label>
+					<input type="text" id="username" />
+				</div>
+				<div class="row" id="password-row">
+					<label>Password:</label>
+					<input type="password" id="password" />
+				</div>
+				<div class="row" id="url-row">
+					<label>TTRSS URL:</label>
+					<input type="text" id="url" placeholder="ex: https://example.com/ttrss/" />
+				</div>
+				<div class="row" style='text-align:right'>
+					<button type="submit">Save</button>
+				</div>
+			</fieldset>
+			<div class='footer'>
+				<a href="http://tt-rss.org/">EZTTRSS</a><!-- Change to Web Store link later -->
+				<span id="version"></span> &copy; 2014 <a href="http://dan.hlavenka.me/">Dan Hlavenka</a>
+			</div>
+		</form>
+	</body>
+</html>

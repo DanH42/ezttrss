@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"manifest_version": 2,
 	"description": "A simple way to keep up with your Tiny Tiny RSS feeds",
+	"options_page": "options.html",
 	"background": {
 		"page": "background.html"
 	}, "browser_action": {
