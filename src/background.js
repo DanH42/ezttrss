@@ -108,7 +108,7 @@ function showUpdates(){
 						message: message,
 						items: items
 					}, function(){/* useless but required */});
-				}
+				});
 			}
 		}else
 			error("onClick: Failed (response.content && !response.content.error)");
