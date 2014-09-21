@@ -99,6 +99,7 @@ function showUpdates(){
 					// Google hates Linux, so list notifications still aren't supported in Chrome 32.
 					// This will be displayed on Linux (and outdated Chrome installs)
 					var message = items[0].title + " - " + items[0].message;
+					chrome.browserAction.setTitle({title: items[0].title + "\n" + items[0].message});
 
 					chrome.notifications.clear("update", function(){/* useless but required */});
 					chrome.notifications.create("update", {
